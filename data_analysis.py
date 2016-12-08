@@ -6,15 +6,16 @@ import openpyxl
 #replicates
 r = 3
 #samples, the row is shifted by 13 in the excel output
-m = 40
+m = 111
 welln = m + 13
 #define the names for the conditions and DNA. this will be input on the interface at the 1st step.
-CONDNAMES = ['CondA', 'CondB']
-DNANAMES = ['DNAA', 'Positive']
+
+CONDNAMES = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+DNANAMES = ['ThermoPrep', 'Midi', 'PrecMidi']
 
 wb = openpyxl.load_workbook('data.xlsx')
 sheets = wb.get_sheet_names()
-sheet = wb.get_sheet_by_name('Sheet 1')
+sheet = wb.get_sheet_by_name('Range 1')
 
 #create the names
 names = []
@@ -36,6 +37,8 @@ for i in range(r):
     blanks.append(rawdata[len(names)*r + x])
     x = x+1
 blankaverage = (sum(blanks)/r)
+print (blanks)
+print (blankaverage)
 
 #do the blank substraction
 data = []
